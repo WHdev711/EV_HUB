@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Screens/LoginScreen.dart';
+import 'package:ev_hub/Config/constants.dart';
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
 
@@ -39,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
         children: <Widget>[
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: field_title),
           ),
           SizedBox(
             height: 10,
@@ -47,8 +48,8 @@ class _SignUpPageState extends State<SignUpPage> {
           TextField(
               obscureText: isPassword,
               decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
+                  border: OutlineInputBorder(),
+                  fillColor: Colors.transparent,
                   filled: true))
         ],
       ),
@@ -56,15 +57,21 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget _submitButton() {
-    return Container(
+    return InkWell(
+      onTap: () {
+         Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      },
+    
+    child : Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(vertical: 15),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: Colors.grey.shade200,
+                color: Colors.green.shade200,
                 offset: Offset(2, 4),
                 blurRadius: 5,
                 spreadRadius: 2)
@@ -72,11 +79,12 @@ class _SignUpPageState extends State<SignUpPage> {
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Color(0xFF72FB48), Color(0xFF7DF72B)])),
+              colors: [Color(0x9F17A32E), Color(0xFF6AF80B)])),
       child: Text(
         'Register Now',
         style: TextStyle(fontSize: 20, color: Colors.white),
       ),
+    ),
     );
   }
 
@@ -103,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Text(
               'Login',
               style: TextStyle(
-                  color: Color(0xfff79c4f),
+                  color: maincolor,
                   fontSize: 13,
                   fontWeight: FontWeight.w600),
             ),
@@ -146,11 +154,11 @@ class _SignUpPageState extends State<SignUpPage> {
             height: double.infinity,
             width: double.infinity,
             ),
-            // Positioned(
-            //   top: -MediaQuery.of(context).size.height * .15,
-            //   right: -MediaQuery.of(context).size.width * .4,
-            //   child: BezierContainer(),
-            // ),
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: Colors.green.withOpacity(0.2),
+            ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: SingleChildScrollView(
@@ -158,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(height: height * .2),
+                    SizedBox(height: height * .1),
                     _title(),
                     SizedBox(
                       height: 50,
