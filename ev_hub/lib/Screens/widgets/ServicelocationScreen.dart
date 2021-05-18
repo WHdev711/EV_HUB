@@ -14,15 +14,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 //   }
 // }
 
-class ServicelocationScreen extends StatefulWidget {
-  ServicelocationScreen({Key key, this.title}) : super(key: key);
+// class ServicelocationScreen extends StatefulWidget {
+//   ServicelocationScreen({Key key, this.title}) : super(key: key);
 
+//   final String title;
+//   @override
+//   State<ServicelocationScreen> createState() => Maplist();
+// }
+
+class Maplist extends StatelessWidget {
+  Maplist({Key key, this.title}) : super(key: key);
   final String title;
-  @override
-  State<ServicelocationScreen> createState() => Maplist();
-}
-
-class Maplist extends State<ServicelocationScreen> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -48,8 +50,8 @@ class Maplist extends State<ServicelocationScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        label: Text('changing station!'),
+        icon: Icon(Icons.electric_car),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Screens/RegisterScreen.dart';
 import 'package:ev_hub/Config/constants.dart';
-import 'package:ev_hub/Screens/ServicelocationScreen.dart';
+import 'package:ev_hub/Screens/MainHomeScreen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -62,8 +62,8 @@ class _LoginPageState extends State<LoginScreen> {
   Widget _submitButton() {
     return InkWell(
       onTap: () {
- Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ServicelocationScreen()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MainHomeScreen()));
       },
     
     child : Container(
