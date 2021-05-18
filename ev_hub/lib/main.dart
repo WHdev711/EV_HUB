@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
           'assets/logo.png'),
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
-        backgroundColor:Colors.blue,
-        loaderColor: Colors.red);
+        backgroundColor:Colors.green.withOpacity(0.45),
+        loaderColor: Colors.green[800]);
   }
 }
 

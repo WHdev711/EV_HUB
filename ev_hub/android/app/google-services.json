@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "439452727249",
+    "firebase_url": "https://chatexampleapp-cf276.firebaseio.com",
+    "project_id": "chatexampleapp-cf276",
+    "storage_bucket": "chatexampleapp-cf276.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439452727249:android:886883d57a6786065952f0",
+        "android_client_info": {
+          "package_name": "co.jugjot.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXZ0WCXkylOHg3vlPIXbGkFVCeZFE2g4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439452727249:android:649fd41d9e67450e5952f0",
+        "android_client_info": {
+          "package_name": "com.example.ev_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXZ0WCXkylOHg3vlPIXbGkFVCeZFE2g4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439452727249:android:40ae990925fdb7155952f0",
+        "android_client_info": {
+          "package_name": "com.example.naya_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439452727249-ceq18qp8ksnjettbqpmq9956pe2av6qs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.naya_project",
+            "certificate_hash": "481bdb40cc838f4d9f585f4ebfb2d37c34061351"
+          }
+        },
+        {
+          "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXZ0WCXkylOHg3vlPIXbGkFVCeZFE2g4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439452727249-h59j5rl751shtno1f9o8n4lqv2ptn367.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
