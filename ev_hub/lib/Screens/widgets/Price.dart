@@ -86,7 +86,6 @@ class _PriceScreene extends State<PriceScreen> {
               ),
               child: Column (
                 children: <Widget>[
-                  SizedBox(height: 10,),
                   Text(
                     'FOR AC TYPE 2 SOCKETS',
                     style: TextStyle(fontSize: 20,color:Colors.black ,fontWeight: FontWeight.bold),

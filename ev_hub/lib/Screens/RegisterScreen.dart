@@ -103,8 +103,8 @@ class _SignUpPageState extends State<SignUpPage> {
               // setState(() {
               //   _loading = false;
               // });
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainHomeScreen()));
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
             } else {
               setState(() {
                 print(value);
@@ -161,8 +161,8 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget _loginAccountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.pushAndRemoveUntil(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()),ModalRoute.withName('/'));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),

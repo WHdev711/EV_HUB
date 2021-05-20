@@ -10,6 +10,9 @@
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Screens/widgets/ServicelocationScreen.dart';
 import 'package:ev_hub/Screens/widgets/Menu.dart';
+import 'package:ev_hub/Config/constants.dart';
+import 'package:ev_hub/Screens/widgets/Booking.dart';
+import 'package:ev_hub/Screens/widgets/Profile.dart';
 
 
 /// This is the main application widget.
@@ -26,18 +29,27 @@ class MainHomeScreen extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _MainHomeScreene extends State<MainHomeScreen> {
   int _selectedIndex = 0;
+  bool userIsLoggedIn = false;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[
+
+    @override
+  void initState() {
+    getLoggedInState();
+    super.initState();
+  }
+  getLoggedInState() async {
+    await Constants.getUserLoggedInSharedPreference().then((value) {
+      setState(() {
+        userIsLoggedIn = value;
+      });
+    });
+  }
+
+    List<Widget> _widgetOptions = <Widget>[
     Maplist(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    Booking(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {

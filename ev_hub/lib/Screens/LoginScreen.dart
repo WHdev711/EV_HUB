@@ -96,8 +96,11 @@ class _LoginPageState extends State<LoginScreen> {
                   userInfoSnapshot.documents[0].data["userName"]);
 
               Constants.saveUserEmailSharedPreference(email);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MainHomeScreen()));
+              Navigator.pushAndRemoveUntil(context,
+                  MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
+              setState(() {
+                _loading = false;
+              });
             }
           });
         }
@@ -181,8 +184,8 @@ class _LoginPageState extends State<LoginScreen> {
   Widget _createAccountLabel() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignUpPage()));
+        Navigator.pushAndRemoveUntil(
+            context, MaterialPageRoute(builder: (context) => SignUpPage()),ModalRoute.withName('/'));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -212,8 +215,8 @@ class _LoginPageState extends State<LoginScreen> {
   Widget _skipLabel() {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MainHomeScreen()));
+        Navigator.pushAndRemoveUntil(
+            context, MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
       },
       child: Text(
         'Skip',

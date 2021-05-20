@@ -33,10 +33,10 @@ class _TermsScreene extends State<TermsScreen> {
               text: 'Hello', // default text style
               children: <TextSpan>[
                 TextSpan(
-                    text: ' beautiful ',
+                    text: ' Here ',
                     style: TextStyle(fontStyle: FontStyle.italic)),
                 TextSpan(
-                    text: 'world',
+                    text: 'Terms and condition page',
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
