@@ -15,20 +15,42 @@ class _VehiclesState extends State<Vehicles> {
       starttime = '',
       endtime = '',
       username = '';
+  String _chosenValue;
+
   bool ischecking = false;
   Widget _customTextField(String title) {
-    return Container(
-        height: 30.0,
-        child: TextField(
+    return DropdownButtonFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          fillColor: Colors.transparent,
+          filled: true),
+      focusColor: Colors.white,
+      value: _chosenValue,
+      //elevation: 5,
+      style: TextStyle(color: Colors.white),
+      iconEnabledColor: Colors.black,
+      items: <String>['Audi e-Tron','BMW 740Le','BMW I3', 'BMW I3s',  'BMW i8', 'Hyundai Kona',  'Jaguar I- Pace',  'Mercedes EQC',   'Mercedes GLC350e',  'Opel Ampera-e', 'Porche Taycan', 'Range Rover PHEV', 'Range Rover Sport PHEV', 'Renault Fluence ZE', 'Renault Zoe', 'Tesla Model 3', 'Tesla Model X', 'Volvo XC60 PHEV', 'Volvo XC90']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(
+            value,
             style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-                hintText: title,
-                contentPadding:EdgeInsets.all(5.0),
-                border: OutlineInputBorder(),
-                fillColor: Colors.transparent,
-                filled: true)));
+          ),
+        );
+      }).toList(),
+      hint: Text(
+        "Please choose car",
+        style: TextStyle(
+            color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500),
+      ),
+      onChanged: (String value) {
+        setState(() {
+          _chosenValue = value;
+        });
+      },
+    );
   }
-
 
   Widget _userField(String title) {
     return Container(
@@ -44,7 +66,7 @@ class _VehiclesState extends State<Vehicles> {
           SizedBox(
             height: 10,
           ),
-          Container(height: 30.0, child: _customTextField('Vehicle Type')),
+          _customTextField('Vehicle Type'),
         ],
       ),
     );
@@ -71,7 +93,6 @@ class _VehiclesState extends State<Vehicles> {
     );
   }
 
- 
   Widget _formdWidget() {
     return Column(
       children: <Widget>[
@@ -122,8 +143,7 @@ class _VehiclesState extends State<Vehicles> {
                         builder: (context) {
                           return CustomDialog(
                               title: "Warning",
-                              description:
-                                  "Hello this is test version.",
+                              description: "Hello this is test version.",
                               buttonText: 'Okay');
                         },
                       );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Config/constants.dart';
 import 'package:ev_hub/utils/ui/custom_dialog.dart';
+import 'package:ev_hub/utils/ui/Datepicker.dart';
 
 class BookdetailScreen extends StatefulWidget {
   BookdetailScreen({Key key, this.title}) : super(key: key);
@@ -11,7 +12,9 @@ class BookdetailScreen extends StatefulWidget {
 }
 
 class _BookdetailScreen extends State<BookdetailScreen> {
-  String type = '', bookingdate = '', starttime = '', endtime = '';
+  String type = '', bookingdate = '';
+  DateTime startdate = new DateTime.now(), enddate = new DateTime.now() ;
+  TimeOfDay starttime = new TimeOfDay.now(), endtime = new TimeOfDay.now();
   String _chosenValue;
   Widget _entryField(String title, {bool isPassword = false}) {
     return Container(
@@ -34,12 +37,6 @@ class _BookdetailScreen extends State<BookdetailScreen> {
                     setState(() {
                       if (title == 'Username') {
                         type = val;
-                      }
-                      if (title == 'Email') {
-                        starttime = val;
-                      }
-                      if (title == 'Password') {
-                        endtime = val;
                       }
                     }),
                   },
@@ -108,13 +105,35 @@ class _BookdetailScreen extends State<BookdetailScreen> {
     return Column(
       children: <Widget>[
         _entrydropField("Connector type"),
-        _entryField("Date"),
-        _entryField("Starttime"),
-        _entryField("Endtime"),
+        // _entryField("Date"),
+        DateTimePicker(labelText: 'Start time',selectedDate: startdate,selectedTime: starttime ,selectDate: (value) {
+          setState(() {
+            startdate = value;
+          });
+        }, selectTime: (value) {
+          setState(() {
+            starttime = value;
+          });
+        }, ),
+        DateTimePicker(labelText: 'End time',selectedDate: enddate,selectedTime: endtime ,selectDate: (value) {
+          setState(() {
+            enddate = value;
+          });
+        }, selectTime: (value) {
+          setState(() {
+            endtime = value;
+          });
+        }, ),
       ],
     );
   }
 
+  @override
+  void initState() {
+    startdate = new DateTime.now(); enddate = new DateTime.now() ;
+    starttime = new TimeOfDay.now(); endtime = new TimeOfDay.now();  
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
