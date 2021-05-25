@@ -26,13 +26,14 @@ class _PriceScreene extends State<PriceScreen> {
       appBar: AppBar(
           title: Text('Price', style: TextStyle(color: Colors.green[900]))),
       body: Container(
-        padding: EdgeInsets.all(50),
+        padding: EdgeInsets.all(30),
         color: Colors.grey[400],
         child: ListView(
           children: <Widget>[
             Container(
               // color: Colors.white,
-              height: 250,
+              // height: 250,
+              padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: Colors.white60,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -51,17 +52,17 @@ class _PriceScreene extends State<PriceScreen> {
                   ),
                   SizedBox(height: 15,),
                   Text(
-                    'Up to 50kW  3.50\$\/min',
+                    'Up to 50kW  3.50₺/kWh',
                     style: TextStyle(color:Colors.black ),
                     ),
                   SizedBox(height: 10,),
                   Text(
-                    '50kW to 90kW  4.50\$\/min ',
+                    '50kW to 90kW  4.50₺/kWh ',
                     style: TextStyle(color:Colors.black,),
                     ),
                   SizedBox(height: 10,),
                   Text(
-                    '90kW and above  5.50\$\/min ',
+                    '90kW and above  5.50₺/kWh ',
                     style: TextStyle(color:Colors.black ),
                     ),
                   SizedBox(height: 10,),
@@ -78,7 +79,6 @@ class _PriceScreene extends State<PriceScreen> {
             ),
             Container(
               // color: Colors.white,
-              height: 300,
               padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: Colors.white60,
@@ -97,17 +97,17 @@ class _PriceScreene extends State<PriceScreen> {
                   ),
                   SizedBox(height: 15,),
                   Text(
-                    'Up to 7.4kW  0.50\$\/min',
+                    'Up to 7.4kW  0.50₺/kWh',
                     style: TextStyle(color:Colors.black ),
                     ),
                   SizedBox(height: 10,),
                   Text(
-                    '7.4kW to 11kW  0.70\$\/min ',
+                    '7.4kW to 11kW  0.50₺/kWh ',
                     style: TextStyle(color:Colors.black,),
                     ),
                   SizedBox(height: 10,),
                   Text(
-                    '11kW and above  0.90\$\/min ',
+                    '11kW and above  0.50₺/kWh ',
                     style: TextStyle(color:Colors.black ),
                     ),
                   SizedBox(height: 10,),

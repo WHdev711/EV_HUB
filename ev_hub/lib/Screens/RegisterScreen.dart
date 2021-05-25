@@ -4,6 +4,7 @@ import 'package:ev_hub/Screens/LoginScreen.dart';
 import 'package:ev_hub/Config/constants.dart';
 import 'package:ev_hub/services/auth.dart';
 import 'package:ev_hub/services/database.dart';
+import 'package:ev_hub/utils/ui/custom_dialog.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key, this.title}) : super(key: key);
@@ -103,13 +104,24 @@ class _SignUpPageState extends State<SignUpPage> {
               // setState(() {
               //   _loading = false;
               // });
-              Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainHomeScreen()),
+                  ModalRoute.withName('/'));
             } else {
               setState(() {
                 print(value);
                 _loading = false;
                 error = "please supply a valid/another email";
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CustomDialog(
+                        title: "Error",
+                        description: "please supply a valid/another email",
+                        buttonText: 'Okay');
+                  },
+                );
               });
             }
           });
@@ -162,7 +174,9 @@ class _SignUpPageState extends State<SignUpPage> {
     return InkWell(
       onTap: () {
         Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()),ModalRoute.withName('/'));
+            context,
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+            ModalRoute.withName('/'));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),

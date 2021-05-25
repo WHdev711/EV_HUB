@@ -1,8 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Config/constants.dart';
 import 'package:ev_hub/Screens/LoginScreen.dart';
+import 'package:ev_hub/Screens/widgets/ProfileDetails.dart';
+import 'package:ev_hub/Screens/widgets/PaymentDetails.dart';
+import 'package:ev_hub/Screens/widgets/Vehicles.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key key, this.title}) : super(key: key);
@@ -101,34 +102,34 @@ class _ProfileState extends State<Profile> {
             leading: Icon(Icons.person),
             title: Text('My details'),
             onTap: () => {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => ContactUsScreen()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileDetails()))
             },
           ),
           ListTile(
             leading: Icon(Icons.account_balance),
             title: Text('Payment details'),
             onTap: () => {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => PriceScreen()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PaymentDetails()))
             },
           ),
           ListTile(
             leading: Icon(Icons.commute),
             title: Text('My Vehicles'),
             onTap: () => {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => TermsScreen()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Vehicles()))
             },
           ),
-          ListTile(
-            leading: Icon(Icons.payment),
-            title: Text('Request EV card'),
-            onTap: () => {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => FaqScreen()))
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.payment),
+          //   title: Text('Request EV card'),
+          //   onTap: () => {
+          //     // Navigator.push(
+          //     //     context, MaterialPageRoute(builder: (context) => FaqScreen()))
+          //   },
+          // ),
           // ListTile(
           //   leading: Icon(Icons.exit_to_app),
           //   title: Text('Logout'),

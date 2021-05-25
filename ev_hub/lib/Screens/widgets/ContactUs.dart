@@ -1,3 +1,4 @@
+import 'package:ev_hub/utils/ui/custom_dialog.dart';
 /// Flutter code sample for BottomNavigationBar
 
 // This example shows a [BottomNavigationBar] as it is used within a [Scaffold]
@@ -28,7 +29,7 @@ class _ContactUsScreene extends State<ContactUsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           TextField(
               decoration: InputDecoration(
@@ -45,7 +46,18 @@ class _ContactUsScreene extends State<ContactUsScreen> {
     return Container(
       padding:EdgeInsets.only(left:40,right:40),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          showDialog(
+                        context: context,
+                        builder: (context) {
+                          return CustomDialog(
+                              title: "Warning",
+                              description:
+                                  "Hello this is test version.",
+                              buttonText: 'Okay');
+                        },
+                      );
+        },
         child: Container(
           // width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.symmetric(vertical: 15),

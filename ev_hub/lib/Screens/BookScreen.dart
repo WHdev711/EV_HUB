@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ev_hub/Screens/BookdetailScreen.dart';
 
 class BookScreen extends StatefulWidget {
-  BookScreen({Key key, this.title}) : super(key: key);
+  BookScreen({Key key, this.title, this.addressinfo}) : super(key: key);
 
   final String title;
+  final String addressinfo;
   @override
   _BookScreen createState() => _BookScreen();
 }
@@ -33,7 +34,7 @@ class _BookScreen extends State<BookScreen> {
                   children:<Widget>[
                     Text('EV HUB',style: TextStyle(color: Colors.green,fontSize: 18 )),
                     SizedBox(height: 15,),
-                    Text('this is addrees'),
+                    Text(widget.addressinfo),
                     SizedBox(height: 10,),
                     Text('This is phonenumber'),
                     SizedBox(height: 10,),

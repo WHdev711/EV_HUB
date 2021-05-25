@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Config/constants.dart';
 import 'package:ev_hub/Screens/LoginScreen.dart';
@@ -45,7 +43,7 @@ class _BookingState extends State<Booking> {
             ),
             SizedBox(height: 20),
             Text(
-              'My appiontment',
+              'My appointment',
               style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w800,
@@ -113,7 +111,7 @@ class _BookingState extends State<Booking> {
             ),
             SizedBox(height: 20),
             Text(
-              'My appiontment',
+              'My appointment',
               style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w800,
@@ -121,7 +119,7 @@ class _BookingState extends State<Booking> {
             ),
             SizedBox(height: 15),
             Text(
-              'You did not login. Pleaase login and book.',
+              'Please go to Book.',
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,

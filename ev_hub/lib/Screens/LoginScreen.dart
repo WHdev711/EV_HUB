@@ -5,6 +5,7 @@ import 'package:ev_hub/Screens/MainHomeScreen.dart';
 import 'package:ev_hub/services/auth.dart';
 import 'package:ev_hub/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ev_hub/utils/ui/custom_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.title}) : super(key: key);
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginScreen> {
   // text field state
 
   String error = '', email = '', password = '';
-    @override
+  @override
   void initState() {
     super.initState();
   }
@@ -35,6 +36,7 @@ class _LoginPageState extends State<LoginScreen> {
     // TODO: implement dispose
     super.dispose();
   }
+
   Widget _entryField(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -88,6 +90,15 @@ class _LoginPageState extends State<LoginScreen> {
             if (result == null) {
               setState(() {
                 error = "please supply a valid email";
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return CustomDialog(
+                        title: "Error",
+                        description: "please supply a valid/another email and correct password",
+                        buttonText: 'Okay');
+                  },
+                );
                 _loading = false;
               });
             } else {
@@ -96,8 +107,10 @@ class _LoginPageState extends State<LoginScreen> {
                   userInfoSnapshot.documents[0].data["userName"]);
 
               Constants.saveUserEmailSharedPreference(email);
-              Navigator.pushAndRemoveUntil(context,
-                  MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainHomeScreen()),
+                  ModalRoute.withName('/'));
               setState(() {
                 _loading = false;
               });
@@ -185,7 +198,9 @@ class _LoginPageState extends State<LoginScreen> {
     return InkWell(
       onTap: () {
         Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => SignUpPage()),ModalRoute.withName('/'));
+            context,
+            MaterialPageRoute(builder: (context) => SignUpPage()),
+            ModalRoute.withName('/'));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -216,7 +231,9 @@ class _LoginPageState extends State<LoginScreen> {
     return InkWell(
       onTap: () {
         Navigator.pushAndRemoveUntil(
-            context, MaterialPageRoute(builder: (context) => MainHomeScreen()),ModalRoute.withName('/'));
+            context,
+            MaterialPageRoute(builder: (context) => MainHomeScreen()),
+            ModalRoute.withName('/'));
       },
       child: Text(
         'Skip',

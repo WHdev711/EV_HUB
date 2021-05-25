@@ -1,19 +1,51 @@
+import 'package:ev_hub/utils/ui/custom_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Config/constants.dart';
-import 'package:ev_hub/utils/ui/custom_dialog.dart';
 
-class BookdetailScreen extends StatefulWidget {
-  BookdetailScreen({Key key, this.title}) : super(key: key);
-
+class ProfileDetails extends StatefulWidget {
+  ProfileDetails({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  _BookdetailScreen createState() => _BookdetailScreen();
+  _ProfileDetailsState createState() => _ProfileDetailsState();
 }
 
-class _BookdetailScreen extends State<BookdetailScreen> {
-  String type = '', bookingdate = '', starttime = '', endtime = '';
-  String _chosenValue;
-  Widget _entryField(String title, {bool isPassword = false}) {
+class _ProfileDetailsState extends State<ProfileDetails> {
+  String type = '',
+      bookingdate = '',
+      starttime = '',
+      endtime = '',
+      username = '';
+  int _defaultradio = 1;
+  Widget _customTextField(String title) {
+    return Container(
+        height: 30.0,
+        child: TextField(
+            style: TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+                hintText: title,
+                contentPadding: EdgeInsets.all(5.0),
+                border: OutlineInputBorder(),
+                fillColor: Colors.transparent,
+                filled: true)));
+  }
+
+  Widget _customRadioButton(String title, int i) {
+    return ListTile(
+      title: Text(title),
+      contentPadding: EdgeInsets.all(0),
+      leading: Radio(
+        groupValue: _defaultradio,
+        value: i,
+        onChanged: (Object value) {
+          setState(() {
+            _defaultradio = value;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _userField(String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -27,32 +59,31 @@ class _BookdetailScreen extends State<BookdetailScreen> {
           SizedBox(
             height: 10,
           ),
-          TextFormField(
-              obscureText: isPassword,
-              validator: (val) => val.isEmpty ? 'Please input $title' : null,
-              onChanged: (val) => {
-                    setState(() {
-                      if (title == 'Username') {
-                        type = val;
-                      }
-                      if (title == 'Email') {
-                        starttime = val;
-                      }
-                      if (title == 'Password') {
-                        endtime = val;
-                      }
-                    }),
-                  },
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.transparent,
-                  filled: true))
+          Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(child: _customTextField('First Name')),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: _customTextField('Last Name')),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(height: 30.0, child: _customTextField('Email Address')),
+          SizedBox(
+            height: 8,
+          ),
+          Container(height: 30.0, child: _customTextField('Phone Number')),
         ],
       ),
     );
   }
 
-  Widget _entrydropField(String title, {bool isPassword = false}) {
+  Widget _invoiceField(String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -66,38 +97,64 @@ class _BookdetailScreen extends State<BookdetailScreen> {
           SizedBox(
             height: 10,
           ),
-          DropdownButtonFormField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                fillColor: Colors.transparent,
-                filled: true),
-            focusColor: Colors.white,
-            value: _chosenValue,
-            //elevation: 5,
-            style: TextStyle(color: Colors.white),
-            iconEnabledColor: Colors.black,
-            items: <String>['AC TYPE', 'DC TYPE']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(
-                  value,
-                  style: TextStyle(color: Colors.black),
-                ),
-              );
-            }).toList(),
-            hint: Text(
-              "Please choose a Connector type",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(child: _customRadioButton('Personal', 1)),
+                // SizedBox(
+                //   width: 10,
+                // ),
+                Expanded(child: _customRadioButton('Corporate', 2)),
+              ],
             ),
-            onChanged: (String value) {
-              setState(() {
-                _chosenValue = value;
-              });
-            },
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(height: 30.0, child: _customTextField('Invoice Number')),
+        ],
+      ),
+    );
+  }
+
+  Widget _addressField(String title) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 15, color: field_title),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 30.0,
+            child: _customTextField('Address'),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(child: _customTextField('City')),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: _customTextField('State')),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            height: 30.0,
+            child: _customTextField('Address'),
           ),
         ],
       ),
@@ -107,10 +164,9 @@ class _BookdetailScreen extends State<BookdetailScreen> {
   Widget _formdWidget() {
     return Column(
       children: <Widget>[
-        _entrydropField("Connector type"),
-        _entryField("Date"),
-        _entryField("Starttime"),
-        _entryField("Endtime"),
+        _userField("User Information"),
+        _invoiceField("Invoice Type"),
+        _addressField("Address Details"),
       ],
     );
   }
@@ -120,8 +176,8 @@ class _BookdetailScreen extends State<BookdetailScreen> {
     return Scaffold(
         backgroundColor: Colors.grey,
         appBar: AppBar(
-            title: Text('My booking details',
-                style: TextStyle(color: Colors.green[900]))),
+            title:
+                Text('My Profile', style: TextStyle(color: Colors.green[900]))),
         body: Container(
           child: SingleChildScrollView(
             child: Column(
@@ -156,8 +212,7 @@ class _BookdetailScreen extends State<BookdetailScreen> {
                         builder: (context) {
                           return CustomDialog(
                               title: "Warning",
-                              description:
-                                  "Hello this is test version.",
+                              description: "Hello this is test version.",
                               buttonText: 'Okay');
                         },
                       );
@@ -180,7 +235,7 @@ class _BookdetailScreen extends State<BookdetailScreen> {
                               end: Alignment.centerRight,
                               colors: [Color(0x9F17A32E), Color(0xFF6AF80B)])),
                       child: Text(
-                        'Book',
+                        'Save',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),

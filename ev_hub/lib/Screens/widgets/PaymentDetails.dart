@@ -1,19 +1,36 @@
+import 'package:ev_hub/utils/ui/custom_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:ev_hub/Config/constants.dart';
-import 'package:ev_hub/utils/ui/custom_dialog.dart';
 
-class BookdetailScreen extends StatefulWidget {
-  BookdetailScreen({Key key, this.title}) : super(key: key);
-
+class PaymentDetails extends StatefulWidget {
+  PaymentDetails({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  _BookdetailScreen createState() => _BookdetailScreen();
+  _PaymentDetailsState createState() => _PaymentDetailsState();
 }
 
-class _BookdetailScreen extends State<BookdetailScreen> {
-  String type = '', bookingdate = '', starttime = '', endtime = '';
-  String _chosenValue;
-  Widget _entryField(String title, {bool isPassword = false}) {
+class _PaymentDetailsState extends State<PaymentDetails> {
+  String type = '',
+      bookingdate = '',
+      starttime = '',
+      endtime = '',
+      username = '';
+  bool ischecking = false;
+  bool isagreecheck = false;
+  Widget _customTextField(String title) {
+    return Container(
+        height: 30.0,
+        child: TextField(
+            style: TextStyle(color: Colors.black),
+            decoration: InputDecoration(
+                hintText: title,
+                contentPadding:EdgeInsets.all(5.0),
+                border: OutlineInputBorder(),
+                fillColor: Colors.transparent,
+                filled: true)));
+  }
+
+  Widget _userField(String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -27,77 +44,81 @@ class _BookdetailScreen extends State<BookdetailScreen> {
           SizedBox(
             height: 10,
           ),
-          TextFormField(
-              obscureText: isPassword,
-              validator: (val) => val.isEmpty ? 'Please input $title' : null,
-              onChanged: (val) => {
-                    setState(() {
-                      if (title == 'Username') {
-                        type = val;
-                      }
-                      if (title == 'Email') {
-                        starttime = val;
-                      }
-                      if (title == 'Password') {
-                        endtime = val;
-                      }
-                    }),
-                  },
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  fillColor: Colors.transparent,
-                  filled: true))
+          Container(height: 30.0, child: _customTextField('Card Number')),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 200,
+                  child: _customTextField('Name on the Card'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: _customTextField('CVV')),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(height: 30.0, child: _customTextField('Card Alias')),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 200,
+                  child: _customTextField('Card Expiry Month'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(child: _customTextField('Year')),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _entrydropField(String title, {bool isPassword = false}) {
+  Widget _checkField(String title) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 15, color: field_title),
-          ),
+          Container(
+              child: Checkbox(
+                  value: ischecking,
+                  onChanged: (value) {
+                    setState(() {
+                      ischecking = value;
+                    });
+                  })),
           SizedBox(
-            height: 10,
+            width: 10,
           ),
-          DropdownButtonFormField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                fillColor: Colors.transparent,
-                filled: true),
-            focusColor: Colors.white,
-            value: _chosenValue,
-            //elevation: 5,
-            style: TextStyle(color: Colors.white),
-            iconEnabledColor: Colors.black,
-            items: <String>['AC TYPE', 'DC TYPE']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(
-                  value,
-                  style: TextStyle(color: Colors.black),
-                ),
-              );
-            }).toList(),
-            hint: Text(
-              "Please choose a Connector type",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
+          Container(child: Text('$title')),
+          SizedBox(
+            width: 100,
+          ),
+          Expanded(
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  Image.asset(
+                    'assets/mastercard.png',
+                    height: 30,
+                  ),
+                  Image.asset('assets/visa.png', height: 30),
+                ],
+              ),
             ),
-            onChanged: (String value) {
-              setState(() {
-                _chosenValue = value;
-              });
-            },
           ),
         ],
       ),
@@ -107,10 +128,8 @@ class _BookdetailScreen extends State<BookdetailScreen> {
   Widget _formdWidget() {
     return Column(
       children: <Widget>[
-        _entrydropField("Connector type"),
-        _entryField("Date"),
-        _entryField("Starttime"),
-        _entryField("Endtime"),
+        _userField("Payment Details"),
+        _checkField('Default'),
       ],
     );
   }
@@ -120,7 +139,7 @@ class _BookdetailScreen extends State<BookdetailScreen> {
     return Scaffold(
         backgroundColor: Colors.grey,
         appBar: AppBar(
-            title: Text('My booking details',
+            title: Text('Payment Details',
                 style: TextStyle(color: Colors.green[900]))),
         body: Container(
           child: SingleChildScrollView(
@@ -146,6 +165,23 @@ class _BookdetailScreen extends State<BookdetailScreen> {
                         ),
                         _formdWidget()
                       ]),
+                ),
+                Container(
+                    padding: EdgeInsets.all(30),
+                    child: Row(
+                      children: <Widget>[
+                        Checkbox(
+                            value: isagreecheck,
+                            onChanged: (value) {
+                              setState(() {
+                                isagreecheck = value;
+                              });
+                            }),
+                        Text('I accept the online selling contract agreement'),
+                      ],
+                    )),
+                SizedBox(
+                  height: 10,
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 50),
@@ -180,7 +216,7 @@ class _BookdetailScreen extends State<BookdetailScreen> {
                               end: Alignment.centerRight,
                               colors: [Color(0x9F17A32E), Color(0xFF6AF80B)])),
                       child: Text(
-                        'Book',
+                        'Save',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
