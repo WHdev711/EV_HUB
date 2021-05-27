@@ -38,39 +38,72 @@ class _PriceScreene extends State<PriceScreen> {
                 color: Colors.white60,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: Column (
+              child: Column(
                 children: <Widget>[
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'FOR DC SOCKETS',
-                    style: TextStyle(fontSize: 20,color:Colors.black ,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Text(
                     'price',
-                    style: TextStyle(fontSize: 18,color:Colors.green ,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Text(
                     'Up to 50kW  3.50₺/kWh',
-                    style: TextStyle(color:Colors.black ),
-                    ),
-                  SizedBox(height: 10,),
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     '50kW to 90kW  4.50₺/kWh ',
-                    style: TextStyle(color:Colors.black,),
+                    style: TextStyle(
+                      color: Colors.black,
                     ),
-                  SizedBox(height: 10,),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     '90kW and above  5.50₺/kWh ',
-                    style: TextStyle(color:Colors.black ),
-                    ),
-                  SizedBox(height: 10,),
-                  Icon(Icons.warning,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Icon(
+                    Icons.warning,
                     color: Colors.red[200],
-                  ),  
-                  SizedBox(height: 8,),
-                  Text('Guests users will benefit from our DC SOCKETS for 25\$',textAlign: TextAlign.center,)                    
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Guests users will benefit from our DC SOCKETS for 25\$',
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Cancellation fee is equal to deposit we have to withdraw it in the initiation.',
+                    textAlign: TextAlign.center,
+                  )
                 ],
               ),
             ),
@@ -84,38 +117,69 @@ class _PriceScreene extends State<PriceScreen> {
                 color: Colors.white60,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
-              child: Column (
+              child: Column(
                 children: <Widget>[
                   Text(
                     'FOR AC TYPE 2 SOCKETS',
-                    style: TextStyle(fontSize: 20,color:Colors.black ,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Text(
                     'price',
-                    style: TextStyle(fontSize: 18,color:Colors.green ,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Text(
                     'Up to 7.4kW  0.50₺/kWh',
-                    style: TextStyle(color:Colors.black ),
-                    ),
-                  SizedBox(height: 10,),
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     '7.4kW to 11kW  0.50₺/kWh ',
-                    style: TextStyle(color:Colors.black,),
+                    style: TextStyle(
+                      color: Colors.black,
                     ),
-                  SizedBox(height: 10,),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     '11kW and above  0.50₺/kWh ',
-                    style: TextStyle(color:Colors.black ),
-                    ),
-                  SizedBox(height: 10,),
-                  Icon(Icons.warning,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Icon(
+                    Icons.warning,
                     color: Colors.red[200],
-                  ),  
-                  SizedBox(height: 8,),
-                  Text('Guests users will benefit from our AC SOCKETS for 20\$',textAlign: TextAlign.center,)                  
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Guests users will benefit from our AC SOCKETS for 20\$',
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'Cancellation fee is equal to deposit we have to withdraw it in the initiation.',
+                    textAlign: TextAlign.center,
+                  )
                 ],
               ),
             ),

@@ -25,26 +25,15 @@ class _FaqScreene extends State<FaqScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('FQA\'s', style: TextStyle(color: Colors.green[900]))),
+            title: Text('FAQ', style: TextStyle(color: Colors.green[900]))),
         body: SingleChildScrollView(
           child: Html(
             data: """
 <center><h1 style = 'color: #008000'>CHARGING</h1>
- <p> <br> <b>Q.How can I charge my car?</br></b>
-Ans. You can charge your vehicle with using its own charging cable at the EV HUB AC charging stations and using <br>the charging cables on
- the device at DC charging stations. 
-You need to download the EV HUB mobile app or have a <br>EV HUB card in order to charge your vehicle at EV HUB charging stations. </p>
-
+ 
 <p> <br> <b>Q. How long does it take for my car to be fully charge?</br> </b>
 Ans. Charging time of the eletric vehicles depends on many variables like battery capacity, <br>current capacity, vehicle charging 
 capacity. At EV HUB you can charge up to <br>80% for 30 minutes with the DC charging station. </p>
-
-<p> <br> <b>Q.How can i start or end the charging process?</br> </b>
-Ans. In order to start the charging process, make sure the cable attached to your vehicle and the station. <br>
-After that you can start the charging process by scanning your EV HUB card to the <br>area on the device or by scanning 
-the QR code on the device with the EV HUB mobile app. <br>In order to finish the charging process, you can either scan your 
-EV HUB card our you can end it by <br>
-clicking the Stop Charging button on the Map page with the mobile app.</p>
 
 <p><br><b> Q. What should i do if the charging cable is disconnected during charging process?</br></b>
 Ans. When the charging process starts in a healthy way, the charging cable locks itself to the station and
@@ -58,10 +47,7 @@ you can contact us through the call center. </p><br>
 Ans. Prices are calculated based on the amount of power <br>you draw from the station and the time you stay at the station. 
 </p>
 
-<p> <br> <b>Q. How and where do I pay for the charging process?</br> </b>
-Ans.You can easily make your payment bu adding your <br>credit card information through the application. 
-After charging is completed, your pricing will be <br>calculated and charged to your card . 
-Your card information is secured by secure payment <br>systems and is not shared with any other institution or organization. </p><br>
+
 
 <h1>Reservation</h1>
  <p><br><b>Q.How can I make a reservation?</br></b>
