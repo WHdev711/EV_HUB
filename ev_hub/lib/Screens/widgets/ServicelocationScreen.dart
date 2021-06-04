@@ -154,7 +154,15 @@ class _MaplistState extends State<Maplist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body:_center == null ?
+      Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                ),
+              )
+      :
+       Stack(
         children: <Widget>[
           GoogleMap(
             onMapCreated: _onMapCreated,

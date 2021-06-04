@@ -13,6 +13,7 @@ import 'package:ev_hub/Screens/widgets/Menu.dart';
 import 'package:ev_hub/Config/constants.dart';
 import 'package:ev_hub/Screens/widgets/Booking.dart';
 import 'package:ev_hub/Screens/widgets/Profile.dart';
+import 'package:ev_hub/Screens/widgets/Bid.dart';
 
 
 /// This is the main application widget.
@@ -49,6 +50,7 @@ class _MainHomeScreene extends State<MainHomeScreen> {
     List<Widget> _widgetOptions = <Widget>[
     Maplist(),
     Booking(),
+    Bid(),
     Profile(),
   ];
 
@@ -82,6 +84,10 @@ class _MainHomeScreene extends State<MainHomeScreen> {
             label: 'Booking',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.format_list_numbered),
+            label: 'Bid',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.perm_contact_cal),
             label: 'Profile',
           ),
@@ -89,6 +95,7 @@ class _MainHomeScreene extends State<MainHomeScreen> {
         currentIndex: _selectedIndex,
         backgroundColor: Colors.green,
         selectedItemColor: Colors.white,
+        type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
       ),
     );

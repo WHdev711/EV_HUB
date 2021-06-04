@@ -4,6 +4,7 @@ import 'package:ev_hub/Screens/LoginScreen.dart';
 import 'package:ev_hub/Screens/widgets/ProfileDetails.dart';
 import 'package:ev_hub/Screens/widgets/PaymentDetails.dart';
 import 'package:ev_hub/Screens/widgets/Vehicles.dart';
+import 'package:ev_hub/Screens/widgets/Battery.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key key, this.title}) : super(key: key);
@@ -120,6 +121,14 @@ class _ProfileState extends State<Profile> {
             onTap: () => {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Vehicles()))
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.battery_charging_full),
+            title: Text('Battery'),
+            onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Battery()))
             },
           ),
           // ListTile(

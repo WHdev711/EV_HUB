@@ -75,7 +75,7 @@ class CustomDialog extends StatelessWidget {
                   child: Text(buttonText),
                   onPressed: () {
                     Navigator.of(context).pop();
-                    onTap();
+                    // onTap();
                   },
                 ),
               ),
